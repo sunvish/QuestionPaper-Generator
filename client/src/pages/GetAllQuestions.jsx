@@ -14,6 +14,15 @@ const QuestionsList = () => {
     }
   };
 
+  const deleteQuestion = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3888/api/delete/${id}`);
+      setQuestions(questions.filter((question) => question._id !== id));
+    } catch (error) {
+      console.error("There was an error deleting the question!", error);
+    }
+  };
+
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -41,6 +50,9 @@ const QuestionsList = () => {
             <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-bold text-gray-700">
               Marks
             </th>
+            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-bold text-gray-700">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -60,6 +72,14 @@ const QuestionsList = () => {
               </td>
               <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">
                 {question.marks}
+              </td>
+              <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline"
+                  onClick={() => deleteQuestion(question._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

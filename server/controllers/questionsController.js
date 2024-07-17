@@ -78,3 +78,10 @@ export const getPaper = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const deleteQuestion = async (req, res) => {
+  const id = req.body.id;
+
+  const response = await questionModel.findOneAndDelete({ id: id });
+  res.status(200).json(response);
+};

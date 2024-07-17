@@ -1,6 +1,6 @@
                     **********Overview********
 
-This repository contains a comprehensive MERN stack application for generating question papers based on user-defined criteria. The frontend is developed using React, providing an intuitive user interface for inputting paper requirements. Communication with the backend API, built with Node.js and MongoDB, facilitates robust data handling and paper generation.
+This repository contains a comprehensive MERN stack application for generating question papers based on user-defined criteria. The frontend is developed using React, providing an intuitive user interface for inputting paper requirements. Communication with the backend API, built with Node.js and MongoDB.
 
                         ********STACK********
 

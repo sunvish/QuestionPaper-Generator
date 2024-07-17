@@ -47,6 +47,11 @@ const CreateQuestion = () => {
       <h1 className="text-2xl font-bold mb-6 text-center">
         Question Paper Generator
       </h1>
+      <p className="text-gray-600 mb-6 text-center">
+        Some questions are already available. Click on "Available Questions" to
+        see them, or you can directly generate the question paper based on those
+        questions.
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -124,7 +129,6 @@ const CreateQuestion = () => {
             Add Question
           </button>
           <Link to={"/allquestions"}>
-            {" "}
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
@@ -133,19 +137,17 @@ const CreateQuestion = () => {
             </button>
           </Link>
           <Link to={"/questionpaper"}>
-            {" "}
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
-              Create QuestionPaper
+              Create Question Paper
             </button>
           </Link>
         </div>
       </form>
     </div>
   );
-  w;
 };
 
 export default CreateQuestion;

@@ -51,6 +51,7 @@ const CreateQuestionPaper = () => {
             type="number"
             id="totalMarks"
             name="totalMarks"
+            placeholder="Total marks of the paper"
             value={totalMarks}
             onChange={(e) => setTotalMarks(e.target.value)}
             required
@@ -68,6 +69,7 @@ const CreateQuestionPaper = () => {
             type="number"
             id="easyPercentage"
             name="easyPercentage"
+            placeholder="Percentage of easy questions"
             value={easyQuestionsPercent}
             onChange={(e) => seteasyQuestionsPercent(e.target.value)}
             required
@@ -85,6 +87,7 @@ const CreateQuestionPaper = () => {
             type="number"
             id="mediumPercentage"
             name="mediumPercentage"
+            placeholder="Percentage of medium questions"
             value={mediumQuestionsPercent}
             onChange={(e) => setmediumQuestionsPercent(e.target.value)}
             required
@@ -102,6 +105,7 @@ const CreateQuestionPaper = () => {
             type="number"
             id="hardPercentage"
             name="hardPercentage"
+            placeholder="Percentage of hard questions"
             value={hardQuestionsPercent}
             onChange={(e) => sethardQuestionsPercent(e.target.value)}
             required
@@ -117,6 +121,13 @@ const CreateQuestionPaper = () => {
           </button>
         </div>
       </form>
+      <p className="mt-6 text-sm text-gray-700">
+        Note: If the total marks and the percentages do not align with the
+        available questions, the generated paper may not fully utilize the total
+        marks. For example, if you input 10 as total marks and 20%, 50%, and 30%
+        for the difficulty percentages, you may only receive questions summing
+        up to the closest possible mark based on the available questions.
+      </p>
       {response && (
         <div className="mt-6">
           <h2 className="text-xl font-bold mb-4">Generated Paper</h2>
