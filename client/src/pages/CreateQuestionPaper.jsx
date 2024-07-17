@@ -1,27 +1,37 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const CreateQuestionPaper = () => {
   const [totalMarks, setTotalMarks] = useState("");
-  const [easyPercentage, setEasyPercentage] = useState("");
-  const [mediumPercentage, setMediumPercentage] = useState("");
-  const [hardPercentage, setHardPercentage] = useState("");
+  const [easyQuestionsPercent, seteasyQuestionsPercent] = useState("");
+  const [mediumQuestionsPercent, setmediumQuestionsPercent] = useState("");
+  const [hardQuestionsPercent, sethardQuestionsPercent] = useState("");
+  const [response, setResponse] = useState(null); // State variable to store the response
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       totalMarks,
-      easyPercentage,
-      mediumPercentage,
-      hardPercentage,
+      easyQuestionsPercent,
+      mediumQuestionsPercent,
+      hardQuestionsPercent,
     };
 
-    console.log(formData);
-
-    
-    // setTotalMarks("");
-    // setEasyPercentage("");
-    // setMediumPercentage("");
-    // setHardPercentage("");
+    try {
+      const response = await axios.post(
+        "http://localhost:3888/api/getpaper",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setResponse(response.data); // Update the response state variable
+    } catch (error) {
+      console.error("There was an error creating the paper!", error);
+      setResponse(null); // Clear the response on error
+    }
   };
 
   return (
@@ -58,8 +68,8 @@ const CreateQuestionPaper = () => {
             type="number"
             id="easyPercentage"
             name="easyPercentage"
-            value={easyPercentage}
-            onChange={(e) => setEasyPercentage(e.target.value)}
+            value={easyQuestionsPercent}
+            onChange={(e) => seteasyQuestionsPercent(e.target.value)}
             required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -75,8 +85,8 @@ const CreateQuestionPaper = () => {
             type="number"
             id="mediumPercentage"
             name="mediumPercentage"
-            value={mediumPercentage}
-            onChange={(e) => setMediumPercentage(e.target.value)}
+            value={mediumQuestionsPercent}
+            onChange={(e) => setmediumQuestionsPercent(e.target.value)}
             required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -92,8 +102,8 @@ const CreateQuestionPaper = () => {
             type="number"
             id="hardPercentage"
             name="hardPercentage"
-            value={hardPercentage}
-            onChange={(e) => setHardPercentage(e.target.value)}
+            value={hardQuestionsPercent}
+            onChange={(e) => sethardQuestionsPercent(e.target.value)}
             required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -107,6 +117,26 @@ const CreateQuestionPaper = () => {
           </button>
         </div>
       </form>
+      {response && (
+        <div className="mt-6">
+          <h2 className="text-xl font-bold mb-4">Generated Paper</h2>
+          <ul>
+            {response.map((question, index) => (
+              <li key={index} className="mb-2">
+                <strong>Question:</strong> {question.question}
+                <br />
+                <strong>Subject:</strong> {question.subject}
+                <br />
+                <strong>Topic:</strong> {question.topic}
+                <br />
+                <strong>Difficulty:</strong> {question.difficulty}
+                <br />
+                <strong>Marks:</strong> {question.marks}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

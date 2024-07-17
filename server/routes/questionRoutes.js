@@ -9,6 +9,6 @@ const questionRouter = express.Router();
 
 questionRouter.post("/create", createQuestion);
 questionRouter.get("/get", getQuestions);
-questionRouter.get("/getPaper",getPaper)
+questionRouter.post("/getPaper",getPaper)
 
 export default questionRouter;
