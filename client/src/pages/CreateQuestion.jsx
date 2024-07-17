@@ -21,7 +21,7 @@ const CreateQuestion = () => {
 
     try {
       const response = await axios.post(
-        "https://questionpapergenerator-rho.vercel.app/",
+        "http://localhost:3888/api/create",
         formData,
         {
           headers: {
