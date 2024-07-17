@@ -1,3 +1,6 @@
+****The site is deployed on render and can be accessed at https://questionpaper-generator-client.onrender.com/ *******
+   (Deployed both frontend and backend)                 
+                    
                     **********Overview********
 
 This repository contains a comprehensive MERN stack application for generating question papers based on user-defined criteria. The frontend is developed using React, providing an intuitive user interface for inputting paper requirements. Communication with the backend API, built with Node.js and MongoDB.
