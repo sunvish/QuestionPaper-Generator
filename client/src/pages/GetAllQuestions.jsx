@@ -6,7 +6,9 @@ const QuestionsList = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await axios.get("http://localhost:3888/api/get");
+      const response = await axios.get(
+        "https://questionpaper-generator-server.onrender.com/api/get"
+      );
       console.log(response);
       setQuestions(response.data);
     } catch (error) {
@@ -16,7 +18,9 @@ const QuestionsList = () => {
 
   const deleteQuestion = async (id) => {
     try {
-      await axios.delete(`http://localhost:3888/api/delete/${id}`);
+      await axios.delete(
+        `https://questionpaper-generator-server.onrender.com/api/delete/${id}`
+      );
       setQuestions(questions.filter((question) => question._id !== id));
     } catch (error) {
       console.error("There was an error deleting the question!", error);

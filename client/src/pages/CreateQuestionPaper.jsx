@@ -19,7 +19,7 @@ const CreateQuestionPaper = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3888/api/getpaper",
+        "https://questionpaper-generator-server.onrender.com/api/getpaper",
         formData,
         {
           headers: {

@@ -21,7 +21,7 @@ const CreateQuestion = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3888/api/create",
+        "https://questionpaper-generator-server.onrender.com/api/create",
         formData,
         {
           headers: {
