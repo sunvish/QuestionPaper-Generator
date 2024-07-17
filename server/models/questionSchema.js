@@ -14,4 +14,4 @@ const questionSchema = new mongoose.Schema({
 
 const questionModel = mongoose.model("questionModel", questionSchema);
 
-export default questionModel;
+export default questionModel; 

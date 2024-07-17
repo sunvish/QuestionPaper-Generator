@@ -18,3 +18,24 @@ export const getQuestions = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+export const getPaper = async (req,res)=>{
+    const {totalMarks,easyPercent,mediumPercent,hardPercent} = req.body
+    const totalEasyMarks = Math.floor((easyPercent/100)*totalMarks)
+    const totalMediumMarks = Math.floor((mediumPercent/100)*totalMarks)
+    const totalHardMarks = Math.floor((hardPercent/100)*totalMarks)
+
+    const questions = await questionModel.find();
+    questions.forEach((question)=>{
+      if(question.difficulty=="Easy"){
+
+      }
+      else if(question.difficulty=="Medium"){
+
+      }else if(question.difficulty=="Hard"){
+        
+      }
+    })
+}
+
+
