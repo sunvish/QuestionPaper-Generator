@@ -8,14 +8,13 @@ import questionRouter from "./routes/questionRoutes.js";
 dotenv.config();
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("server is running");
+});
 
 app.use(express.json());
 app.use(cors());
 app.use("/api", questionRouter);
-
-app.get("/", (req, res) => {
-  res.send("server is running");
-});
 
 // mongodb connection
 mongoose
