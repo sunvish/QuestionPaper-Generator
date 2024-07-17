@@ -6,7 +6,7 @@ const CreateQuestionPaper = () => {
   const [easyQuestionsPercent, seteasyQuestionsPercent] = useState("");
   const [mediumQuestionsPercent, setmediumQuestionsPercent] = useState("");
   const [hardQuestionsPercent, sethardQuestionsPercent] = useState("");
-  const [response, setResponse] = useState(null); // State variable to store the response
+  const [response, setResponse] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +27,10 @@ const CreateQuestionPaper = () => {
           },
         }
       );
-      setResponse(response.data); // Update the response state variable
+      setResponse(response.data);
     } catch (error) {
       console.error("There was an error creating the paper!", error);
-      setResponse(null); // Clear the response on error
+      setResponse(null);
     }
   };
 
